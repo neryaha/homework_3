@@ -19,7 +19,6 @@ public class Selenide {
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
         $("ul.repo-list li").$("a").click();
         $("#wiki-tab").click();
-        $("#wiki-body").shouldHave(text("Soft assertions"));
         $("#wiki-body").$(byText("Soft assertions")).click();
         $("#wiki-content").shouldHave(text("@ExtendWith"));
     }
