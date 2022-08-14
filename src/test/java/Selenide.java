@@ -14,11 +14,13 @@ public class Selenide {
 
     @Test
     void selenideWiki() {
-        open("https://github.com/selenide/selenide");
+        open("https://github.com/");
 
-        actions().sendKeys("g", "w").perform();
-        $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
-        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
+        $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
+        $("ul.repo-list li").$("a").click();
+        $("#wiki-tab").click();
+        $("#wiki-body").shouldHave(text("Soft assertions"));
+        $("#wiki-body").$(byText("Soft assertions")).click();
         $("#wiki-content").shouldHave(text("@ExtendWith"));
     }
 }
